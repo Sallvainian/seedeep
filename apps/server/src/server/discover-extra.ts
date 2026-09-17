@@ -76,6 +76,7 @@ async function walkDirs(
   }
 }
 
+/** Grok Build sessions under `~/.grok/sessions`, one record per `summary.json`. */
 export async function scanGrokSessions(
   home: string,
   now: number,
@@ -137,6 +138,7 @@ export async function scanGrokSessions(
   return { sessions, complete: complete.v };
 }
 
+/** Codex rollout jsonl files under `~/.codex/sessions`. */
 export async function scanCodexSessions(home: string, now: number): Promise<ExtraScan> {
   const root = join(home, '.codex', 'sessions');
   const sessions: SessionRecord[] = [];
@@ -209,6 +211,7 @@ export async function scanCodexSessions(home: string, now: number): Promise<Extr
   return { sessions, complete: complete.v };
 }
 
+/** Gemini CLI chats under `~/.gemini/tmp/<project>/chats`. */
 export async function scanGeminiSessions(home: string, now: number): Promise<ExtraScan> {
   const root = join(home, '.gemini', 'tmp');
   const sessions: SessionRecord[] = [];
@@ -274,6 +277,7 @@ export async function scanGeminiSessions(home: string, now: number): Promise<Ext
   return { sessions, complete: complete.v };
 }
 
+/** Antigravity CLI transcripts under ~/.gemini/antigravity-cli/brain and ~/.gemini/antigravity/brain. */
 export async function scanAgySessions(home: string, now: number): Promise<ExtraScan> {
   const sessions: SessionRecord[] = [];
   const complete = { v: true };
@@ -311,6 +315,7 @@ export async function scanAgySessions(home: string, now: number): Promise<ExtraS
   return { sessions, complete: complete.v };
 }
 
+/** All non-Claude roots. Tests that pin DiscoverOptions.roots skip this. */
 export async function scanExtraSessions(
   home: string,
   now: number,

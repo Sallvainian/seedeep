@@ -6,7 +6,7 @@ function asObj(v: unknown): Record<string, unknown> {
   return v && typeof v === 'object' ? (v as Record<string, unknown>) : {};
 }
 
-/** Gemini CLI session jsonl, and Antigravity CLI transcript jsonl when it uses the same shape. */
+/** Gemini CLI or Antigravity transcript jsonl line → normalized events. Never throws. */
 export function parseGeminiLine(line: string, ctx: ParseCtx): NormalizedEvent[] {
   const d = parseJson(line);
   if (!d) return [];

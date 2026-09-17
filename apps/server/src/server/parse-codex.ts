@@ -36,7 +36,7 @@ function parseArgs(raw: unknown): Record<string, unknown> {
   return {};
 }
 
-/** One Codex `rollout-*.jsonl` line. */
+/** One Codex `rollout-*.jsonl` line → normalized events. Never throws. */
 export function parseCodexLine(line: string, ctx: ParseCtx): NormalizedEvent[] {
   const d = parseJson(line);
   if (!d) return [];

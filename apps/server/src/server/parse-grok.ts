@@ -119,7 +119,7 @@ function parseEvent(d: Record<string, unknown>, ctx: ParseCtx): NormalizedEvent[
   return [];
 }
 
-/** One Grok `updates.jsonl` or `events.jsonl` line → normalized events. */
+/** One Grok `updates.jsonl` or `events.jsonl` line → normalized events. Never throws. */
 export function parseGrokLine(line: string, ctx: ParseCtx): NormalizedEvent[] {
   const d = parseJson(line);
   if (!d) return [];
